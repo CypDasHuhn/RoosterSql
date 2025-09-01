@@ -2,8 +2,9 @@ package dev.cypdashuhn.rooster.db
 
 import com.google.common.cache.CacheBuilder
 import dev.cypdashuhn.rooster.common.RoosterCache
-import dev.cypdashuhn.rooster.common.RoosterCommon
+import dev.cypdashuhn.rooster.common.RoosterModuleBuilder
 import dev.cypdashuhn.rooster.common.RoosterServices
+import dev.cypdashuhn.rooster.common.initRooster
 import org.bukkit.plugin.java.JavaPlugin
 import org.jetbrains.exposed.sql.Table
 import java.util.concurrent.TimeUnit
@@ -28,7 +29,12 @@ object RoosterDb {
             CacheBuilder.newBuilder().expireAfterWrite(5, TimeUnit.MINUTES)
         )
 
-        initDatabase(tables + this.tables)
-        RoosterCommon.init(plugin)
+        initRooster(plugin, this.services, this.cache) {
+            db(tables + this@RoosterDb.tables)
+        }
     }
+}
+
+fun RoosterModuleBuilder.db(tables: List<Table>) {
+    RoosterDb.init(plugin, tables, services, cache)
 }

@@ -3,7 +3,7 @@ package dev.cypdashuhn.rooster.db.utility_tables
 import com.google.gson.Gson
 import dev.cypdashuhn.rooster.common.RoosterService
 import dev.cypdashuhn.rooster.db.RoosterDb
-import dev.cypdashuhn.rooster.db.utility_tables.ItemManager.Item.Companion.transform
+import dev.cypdashuhn.rooster.db.utility_tables.LocationManager.Location.Companion.transform
 import org.bukkit.Location
 import org.jetbrains.exposed.dao.IntEntity
 import org.jetbrains.exposed.dao.IntEntityClass
