@@ -29,9 +29,7 @@ object RoosterDb {
             CacheBuilder.newBuilder().expireAfterWrite(5, TimeUnit.MINUTES)
         )
 
-        initRooster(plugin, this.services, this.cache) {
-            db(tables + this@RoosterDb.tables)
-        }
+        initRooster(plugin, this.services, this.cache)
     }
 }
 
