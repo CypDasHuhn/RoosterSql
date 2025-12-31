@@ -24,7 +24,7 @@ object RoosterDb {
         cache: RoosterCache<String, Any>? = null
     ) {
         this.plugin = plugin
-        if (services != null) this.services = services
+        if (services != null) this.services.byOther(services)
         this.cache = cache ?: RoosterCache(
             CacheBuilder.newBuilder().expireAfterWrite(5, TimeUnit.MINUTES)
         )
